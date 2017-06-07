@@ -53,23 +53,23 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-$('#s').on('click',function(event){
-  data = $('#data').serialize();
+$('#s').on('click', function(event) {
   event.preventDefault();
-
-  $.ajax({
+    data = $('#data').serialize();
+    console.log(data);
+    $.ajax({
+        type: "POST",
         url: "post.php",
-        beforeSend: function () {},
-        success: function (data) {
-          console.log(data);
+        data: data,
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(data){
+      console.log(data);
         }
+    });
+    return false;
 });
-
-  return false;
-
-
-});
-
 </script>
 </body>
 </html>

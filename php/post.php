@@ -1,7 +1,8 @@
 <?php 
 
 
-$title = "Some title";
-$message = "some message";
-$command = "/path/to/script/primes.py -t $title -m $message";
-exec($command);
+
+$folder = $_POST['folderInput'];
+$run = exec("python ../pys/arduino_listener.py $folder");
+//$run = exec("python ../pys/test.py $folder");
+print $run;

@@ -1,8 +1,7 @@
 #https://stackoverflow.com/questions/4977125/passing-value-from-php-script-to-python-script
 import serial
-import cgi
-form = cgi.FieldStorage()
-folder =  form.getvalue('folderInput')
+import sys
+folder = sys.argv[1]
 from gphoto import capture
 ser = serial.Serial("/dev/ttyUSB0", 9600) # Establish the connection on a specific port
 
