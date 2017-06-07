@@ -33,7 +33,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-<form name="data" action="../pys/arduino_listener.py" method="post">
+<form name="data" id="data" method="post">
   <div class="row">
     <!--<div class="twelve columns">
       <label for="exampleEmailInput">Your email</label>
@@ -44,12 +44,32 @@
       <input class="u-full-width" type="text" placeholder="images" id="folderInput" name="folderInput" required="true">
     </div>
   </div>
-  <input class="button-primary" type="submit" value="Start">
+  <input id="s" class="button-primary" type="submit" value="Start">
 </form>
     </div>
   </div>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+$('#s').on('click',function(event){
+  data = $('#data').serialize();
+  event.preventDefault();
+
+  $.ajax({
+        url: "post.php",
+        beforeSend: function () {},
+        success: function (data) {
+          console.log(data);
+        }
+});
+
+  return false;
+
+
+});
+
+</script>
 </body>
 </html>
