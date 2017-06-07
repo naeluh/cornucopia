@@ -1,3 +1,4 @@
+#https://stackoverflow.com/questions/4977125/passing-value-from-php-script-to-python-script
 import serial
 import cgi
 form = cgi.FieldStorage()
