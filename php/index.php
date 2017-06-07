@@ -19,8 +19,8 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -33,15 +33,15 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-<form name="data" action="pys/gphoto.py" method="get">
+<form name="data" action="../pys/gphoto.py" method="get">
   <div class="row">
-    <div class="twelve columns">
+    <!--<div class="twelve columns">
       <label for="exampleEmailInput">Your email</label>
       <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
-    </div>
+    </div> -->
     <div class="twelve columns">
       <label for="folderInput">Folder Name</label>
-      <input class="u-full-width" type="text" placeholder="images" id="folderInput">
+      <input class="u-full-width" type="text" placeholder="images" id="folderInput" name="folderInput" required="true">
     </div>
   </div>
   <input class="button-primary" type="submit" value="Start">
