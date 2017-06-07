@@ -33,7 +33,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-<form name="data" action="../pys/gphoto.py" method="get">
+<form name="data" action="../pys/arduino_listener.py" method="post">
   <div class="row">
     <!--<div class="twelve columns">
       <label for="exampleEmailInput">Your email</label>
