@@ -33,19 +33,26 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-<form name="data" id="data" method="post">
-  <div class="row">
-    <!--<div class="twelve columns">
-      <label for="exampleEmailInput">Your email</label>
-      <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
-    </div> -->
-    <div class="twelve columns">
-      <label for="folderInput">Folder Name</label>
-      <input class="u-full-width" type="text" placeholder="images" id="folderInput" name="folderInput" required="true">
-    </div>
-  </div>
-  <input id="s" class="button-primary" type="submit" value="Start">
-</form>
+      <form name="data" id="data" method="post">
+        <div class="row">
+
+          <!--<div class="twelve columns">
+            <label for="exampleEmailInput">Your email</label>
+            <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+          </div> -->
+
+          <div class="twelve columns"><p>&nbsp;</p></div>
+          <div class="twelve columns"><p>&nbsp;</p></div>
+          <div class="twelve columns"><p>&nbsp;</p></div>
+          <div class="twelve columns"><p>&nbsp;</p></div>
+
+          <div class="twelve columns">
+            <label for="folderInput">Folder Name</label>
+            <input class="u-full-width" type="text" placeholder="images" id="folderInput" name="folderInput" required="true">
+          </div>
+        </div>
+        <input id="s" class="button-primary" type="submit" value="Start">
+      </form>
     </div>
   </div>
 
@@ -53,22 +60,25 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-$('#s').on('click', function(event) {
+$("#s").on("click", function(event) {
   event.preventDefault();
-    data = $('#data').serialize();
+  if ($("#folderInput").val() !== "") {
+    data = $("#data").serialize();
     console.log(data);
     $.ajax({
-        type: "POST",
-        url: "post.php",
-        data: data,
-        success: function(data) {
-            console.log(data);
-        },
-        error: function(data){
-      console.log(data);
-        }
+      type:"POST", 
+      url:"post.php", 
+      data:data, 
+      success:function(data) {
+        console.log(data);
+      }, error:function(data) {
+        console.log(data);
+      }
     });
-    return false;
+  } else {
+    alert("Please add a value!!!!!!!!!!!!!!!!!!!!");
+  }
+  return false;
 });
 </script>
 </body>
