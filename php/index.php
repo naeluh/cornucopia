@@ -51,7 +51,11 @@
             <input class="u-full-width" type="text" placeholder="images" id="folderInput" name="folderInput" required="true">
           </div>
         </div>
-        <input id="s" class="button-primary" type="submit" value="Start">
+        <input id="start" class="button-primary" type="submit" value="Start">
+        </form>
+        <form name="dataend" id="dataend" method="post">
+          <input class="u-full-width" type="hidden" id="kill" name="kill" value="kill">
+          <input id="stop" class="button-primary" type="submit" value="Stop">
       </form>
     </div>
   </div>
@@ -60,7 +64,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-$("#s").on("click", function(event) {
+$("#start").on("click", function(event) {
   event.preventDefault();
   if ($("#folderInput").val() !== "") {
     data = $("#data").serialize();
@@ -78,6 +82,22 @@ $("#s").on("click", function(event) {
   } else {
     alert("Please add a value!!!!!!!!!!!!!!!!!!!!");
   }
+  return false;
+});
+$("#stop").on("click", function(event) {
+  event.preventDefault();
+    data = $("#dataend").serialize();
+    console.log(data);
+    $.ajax({
+      type:"POST", 
+      url:"kill.php", 
+      data:data, 
+      success:function(data) {
+        console.log(data);
+      }, error:function(data) {
+        console.log(data);
+      }
+    });
   return false;
 });
 </script>
