@@ -23,7 +23,7 @@ def capture(name):
     file_path = gp.check_result(gp.gp_camera_capture(
         camera, gp.GP_CAPTURE_IMAGE, context))
     print('Camera file path: {0}/{1}'.format(file_path.folder, file_path.name))
-    target = os.path.join(name, t+na.name)
+    target = os.path.join(name, t+file_path.name)
     print('Copying image to', target)
     camera_file = gp.check_result(gp.gp_camera_file_get(
             camera, file_path.folder, file_path.name,

@@ -1,5 +1,6 @@
 #https://stackoverflow.com/questions/4977125/passing-value-from-php-script-to-python-script
 from __future__ import print_function
+from time import sleep
 import logging
 import os
 import subprocess
@@ -39,6 +40,7 @@ def capture(d):
     gp.check_result(gp.gp_file_save(camera_file, target))
     #subprocess.call(['xdg-open', target])
     gp.check_result(gp.gp_camera_exit(camera, context))
+    gp.gp_camera_wait_for_event(camera,10,context)
     return 0
 
 
@@ -46,7 +48,7 @@ def capture(d):
 #print sys.argv[1]
 uid = pwd.getpwnam("naeluh").pw_uid
 gid = grp.getgrnam("naeluh").gr_gid
-p = os.getcwd() + "/" #this is the path
+p = "/media/naeluh/My Passport/" #this is the path
 directory = sys.argv[1] #this is the folder
 fullpath = p + directory
 if not os.path.exists(fullpath):
@@ -59,7 +61,9 @@ ser = serial.Serial("/dev/ttyUSB0", 9600)
 print(fullpath)
 
 while True:
+    sleep(2)
     arduino = len(ser.readline())
     if arduino > 0:
 		capture(fullpath)
+    #sleep(5)
     #print ser.readline()
