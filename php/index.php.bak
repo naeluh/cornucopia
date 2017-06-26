@@ -49,18 +49,14 @@
           <div class="twelve columns">
             <label for="folderInput">Folder Name</label>
             <input class="u-full-width" type="text" placeholder="images" id="folderInput" name="folderInput" required="true">
-            <input class="u-full-width" type="hidden" id="kill" name="kill" value="">
           </div>
         </div>
         <input id="start" class="button-primary" type="submit" value="Start">
-        <input id="stop" class="button-primary" type="submit" value="Stop">
         </form>
-      <!--
-      <form name="dataend" id="dataend" method="post">
+        <form name="dataend" id="dataend" method="post">
           <input class="u-full-width" type="hidden" id="kill" name="kill" value="kill">
           <input id="stop" class="button-primary" type="submit" value="Stop">
       </form>
-      -->
     </div>
   </div>
 
@@ -68,8 +64,6 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-var start = null;
-
 $("#start").on("click", function(event) {
   event.preventDefault();
   if ($("#folderInput").val() !== "") {
@@ -81,27 +75,22 @@ $("#start").on("click", function(event) {
       data:data, 
       success:function(data) {
         console.log(data);
-        //start = setInterval(function() { reload(); console.log('load') }, 10E3);
       }, error:function(data) {
         console.log(data);
       }
     });
   } else {
-    alert("Please add a value");
+    alert("Please add a value!!!!!!!!!!!!!!!!!!!!");
   }
   return false;
 });
-
 $("#stop").on("click", function(event) {
-    event.preventDefault();
-    clearInterval(start);
-    $("#folderInput").val('');
-    $("#kill").val('kill');
-    data = $("#data").serialize();
+  event.preventDefault();
+    data = $("#dataend").serialize();
     console.log(data);
     $.ajax({
       type:"POST", 
-      url:"post.php", 
+      url:"kill.php", 
       data:data, 
       success:function(data) {
         console.log(data);
@@ -111,19 +100,6 @@ $("#stop").on("click", function(event) {
     });
   return false;
 });
-
-var reload = function(){
-    $.ajax({
-      type:"POST", 
-      url:"image.php", 
-      data:data, 
-      success:function(data) {
-        console.log(data);
-      }, error:function(data) {
-        console.log(data);
-      }
-    });
-};
 </script>
 </body>
 </html>

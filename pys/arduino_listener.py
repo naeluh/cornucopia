@@ -48,7 +48,7 @@ def capture(d):
 #print sys.argv[1]
 uid = pwd.getpwnam("naeluh").pw_uid
 gid = grp.getgrnam("naeluh").gr_gid
-p = "/media/naeluh/My Passport/" #this is the path
+p = "/media/naeluh/drive/images/" #this is the path
 directory = sys.argv[1] #this is the folder
 fullpath = p + directory
 if not os.path.exists(fullpath):

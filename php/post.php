@@ -8,9 +8,11 @@
 //print shell_exec( 'whoami' );
 
 
-if(isset($_POST['folderInput'])) {
-	$run = shell_exec("/usr/bin/python ../pys/arduino_listener.py " . $_POST['folderInput']);
-	//print $run;
-	//print $folder;
-	print "run";
-} 
+if(isset($_POST['folderInput']) && !empty($_POST['folderInput'])) {
+	$folder = str_replace(' ', '_',$_POST['folderInput']);;
+	$run = shell_exec("/usr/bin/python ../pys/arduino_listener.py " . $folder);
+	print $run;
+}  else {
+	$run = shell_exec("sudo pkill python");
+	print $run;
+}
