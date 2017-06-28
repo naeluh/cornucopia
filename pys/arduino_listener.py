@@ -1,6 +1,7 @@
 #https://stackoverflow.com/questions/4977125/passing-value-from-php-script-to-python-script
 from __future__ import print_function
 from time import sleep
+import time
 import logging
 import os
 import subprocess
@@ -20,7 +21,7 @@ def store(*values):
 store.values = ()
 
 def capture(d):
-    t = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    t = str(int(time.time()))
     logging.basicConfig(
     format='%(levelname)s: %(name)s: %(message)s', level=logging.WARNING)
     gp.check_result(gp.use_python_logging())
@@ -31,7 +32,7 @@ def capture(d):
     file_path = gp.check_result(gp.gp_camera_capture(
         camera, gp.GP_CAPTURE_IMAGE, context))
     print('Camera file path: {0}/{1}'.format(file_path.folder, file_path.name))
-    target = os.path.join(d, t+file_path.name)
+    target = os.path.join(d, t + file_path.name)
     print(target)
     print('Copying image to', target)
     camera_file = gp.check_result(gp.gp_camera_file_get(
